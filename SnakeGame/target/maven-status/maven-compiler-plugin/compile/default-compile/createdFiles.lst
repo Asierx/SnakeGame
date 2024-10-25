@@ -1,8 +1,16 @@
 com\snakegame\controller\GameController.class
+com\snakegame\view\Menu$1.class
+com\snakegame\view\GameFrame.class
+com\snakegame\view\GamePanel$2.class
+com\snakegame\view\GameOptions$1.class
+com\snakegame\view\Menu$2.class
+com\snakegame\view\GameOptions$2.class
+com\snakegame\view\GamePanel$1.class
 com\snakegame\model\Direction.class
 com\snakegame\model\Food.class
-com\snakegame\view\GameFrame.class
 com\snakegame\view\GamePanel.class
 com\snakegame\view\Menu.class
 com\snakegame\model\Snake.class
+com\snakegame\view\GameOptions.class
 com\snakegame\Main.class
+com\snakegame\view\Menu$3.class

@@ -17,13 +17,19 @@ public class GameFrame extends javax.swing.JFrame {
      */
     public GameFrame() {
         setTitle("Snake Game");
-        setSize(800, 600);
+        setSize(500, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centra la ventana
     }
 
     public void initBoard(GamePanel gamePanel) {
         setContentPane(gamePanel);
+        revalidate();
+        repaint();
+    }
+    
+    public void initOptions(GameOptions gameOptions){
+        setContentPane(gameOptions);
         revalidate();
         repaint();
     }
