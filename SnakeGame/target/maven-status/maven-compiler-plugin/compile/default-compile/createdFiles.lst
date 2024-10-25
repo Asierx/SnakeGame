@@ -1,0 +1,8 @@
+com\snakegame\controller\GameController.class
+com\snakegame\model\Direction.class
+com\snakegame\model\Food.class
+com\snakegame\view\GameFrame.class
+com\snakegame\view\GamePanel.class
+com\snakegame\view\Menu.class
+com\snakegame\model\Snake.class
+com\snakegame\Main.class
