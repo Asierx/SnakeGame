@@ -8,12 +8,15 @@ import javax.swing.Timer;
 import com.snakegame.model.Food;
 import com.snakegame.model.Snake;
 import com.snakegame.view.GamePanel;
+import com.sun.java.accessibility.util.AWTEventMonitor;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
  * @author asier
  */
-public class GameController {
+public final class GameController implements KeyListener {
 
     private Snake snake;
     private Food food;
@@ -28,12 +31,31 @@ public class GameController {
         startGame();
     }
     private void initListeners() {
+       
+        
     }
     
     public void startGame() {
+        
     }
 
     private void updateGame() {
+        
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    }
 

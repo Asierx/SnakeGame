@@ -16,24 +16,27 @@ public class GameFrame extends javax.swing.JFrame {
      * Creates new form GameFrame
      */
     public GameFrame() {
-        setTitle("Snake Game");
-        setSize(500, 350);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centra la ventana
+        setTitle("Snake Game"); // Sets window title
+        setSize(500, 350); // Sets the size of the window
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Sets how the frame closes
+        setLocationRelativeTo(null); // Centers the frame
     }
 
+    // GameBoard panel establishment
     public void initBoard(GamePanel gamePanel) {
-        setContentPane(gamePanel);
+        setContentPane(gamePanel); 
         revalidate();
         repaint();
     }
     
+    // Options panel establishment
     public void initOptions(GameOptions gameOptions){
         setContentPane(gameOptions);
         revalidate();
         repaint();
     }
 
+    // Menu panel establishment
     public void showMenu(Menu menu) {
         setContentPane(menu);
         revalidate();

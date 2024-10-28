@@ -9,5 +9,4 @@ package com.snakegame.model;
  * @author asier
  */
 public class Direction {
-    
 }

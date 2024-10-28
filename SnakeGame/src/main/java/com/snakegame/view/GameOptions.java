@@ -5,6 +5,7 @@
 package com.snakegame.view;
 
 import com.snakegame.view.Menu;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,14 +14,12 @@ import com.snakegame.view.Menu;
 public class GameOptions extends javax.swing.JPanel {
 
     private final GameFrame frame;
-    private Menu menu;
     
     /**
      * Creates new form GameOptions
      */
     public GameOptions(GameFrame frame) {
         this.frame = frame;
-        this.menu = menu;
         initComponents();
     }
 
@@ -75,7 +74,10 @@ public class GameOptions extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
+        int response = JOptionPane.showConfirmDialog(frame, "¿Are you sure you want to leave? :( ", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBack2MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2MenuActionPerformed

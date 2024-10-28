@@ -4,8 +4,10 @@ com\snakegame\view\GameFrame.class
 com\snakegame\view\GamePanel$2.class
 com\snakegame\view\GameOptions$1.class
 com\snakegame\view\Menu$2.class
+com\snakegame\view\Menu$5.class
 com\snakegame\view\GameOptions$2.class
 com\snakegame\view\GamePanel$1.class
+com\snakegame\view\Menu$4.class
 com\snakegame\model\Direction.class
 com\snakegame\model\Food.class
 com\snakegame\view\GamePanel.class

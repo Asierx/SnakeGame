@@ -7,6 +7,10 @@ package com.snakegame.view;
 import com.snakegame.view.GameFrame;
 import com.snakegame.view.GameOptions;
 import com.snakegame.view.GamePanel;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,10 +39,17 @@ public class Menu extends javax.swing.JPanel {
 
         startButton = new javax.swing.JButton();
         leaveButton = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jlTitle = new javax.swing.JLabel();
         optionsButton = new javax.swing.JButton();
+        btnSupportMe = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0)), "Project performed by Yoi2k", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(102, 255, 51))); // NOI18N
+        setForeground(new java.awt.Color(51, 255, 51));
+
+        startButton.setBackground(new java.awt.Color(0, 255, 51));
+        startButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        startButton.setForeground(new java.awt.Color(255, 255, 255));
         startButton.setText("START");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +57,9 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
+        leaveButton.setBackground(new java.awt.Color(0, 0, 0));
+        leaveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        leaveButton.setForeground(new java.awt.Color(255, 255, 255));
         leaveButton.setText("Leave");
         leaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,14 +67,33 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("       SNAKE GAME!");
+        jlTitle.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        jlTitle.setForeground(new java.awt.Color(0, 255, 102));
+        jlTitle.setText("SNAKE GAME");
+        jlTitle.setToolTipText("");
+        jlTitle.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jlTitleComponentResized(evt);
+            }
+        });
 
-        jLabel2.setText("Project performed by Yoi2k");
-
-        optionsButton.setText("Options");
+        optionsButton.setBackground(new java.awt.Color(102, 255, 102));
+        optionsButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        optionsButton.setForeground(new java.awt.Color(255, 255, 255));
+        optionsButton.setText("OPTIONS");
         optionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optionsButtonActionPerformed(evt);
+            }
+        });
+
+        btnSupportMe.setBackground(new java.awt.Color(255, 51, 51));
+        btnSupportMe.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSupportMe.setForeground(new java.awt.Color(255, 255, 255));
+        btnSupportMe.setText("SUPPORT ME!");
+        btnSupportMe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupportMeActionPerformed(evt);
             }
         });
 
@@ -72,38 +105,38 @@ public class Menu extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(btnSupportMe)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(leaveButton)
-                        .addGap(14, 14, 14))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 187, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(190, 190, 190))))
+                        .addGap(0, 84, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(175, 175, 175))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jlTitle)
+                                .addGap(67, 67, 67))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(205, 205, 205))
+                .addComponent(optionsButton)
+                .addGap(191, 191, 191))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addComponent(jlTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(leaveButton)
-                        .addGap(14, 14, 14))))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSupportMe)
+                    .addComponent(leaveButton))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,7 +146,10 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void leaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveButtonActionPerformed
-        System.exit(0);
+        int response = JOptionPane.showConfirmDialog(frame, "¿Are you sure you want to leave? :( ", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_leaveButtonActionPerformed
 
     private void optionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsButtonActionPerformed
@@ -121,10 +157,45 @@ public class Menu extends javax.swing.JPanel {
         frame.initOptions(gameOptions);
     }//GEN-LAST:event_optionsButtonActionPerformed
 
+    private void btnSupportMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupportMeActionPerformed
+
+        // Process statments
+        String myPortFolio = "https://linktr.ee/yoi2k";
+        String SupportPage = "https://www.paypal.me/Yoi2k"; 
+        
+        // try catch in case de clause fails in its executions
+        try {
+            // First process initialitzation
+            ProcessBuilder pbopenPortFolioCMD = new ProcessBuilder("cmd", "/c", "start", myPortFolio);
+            
+            // First process execution statement
+            pbopenPortFolioCMD.start();
+            
+            Thread.sleep(500); // 0,5s wait between process
+            
+            // Second process initialitzation
+            ProcessBuilder pbSupportDonoPageCMD = new ProcessBuilder("cmd", "/c", "start", SupportPage);
+            
+            // Second process execution statement
+            pbSupportDonoPageCMD.start();
+            
+        // Exception handling
+        } catch (IOException ex) {
+            System.err.println("Accesing to Page Error" + ex.getMessage());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSupportMeActionPerformed
+
+    private void jlTitleComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jlTitleComponentResized
+
+        
+    }//GEN-LAST:event_jlTitleComponentResized
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnSupportMe;
+    private javax.swing.JLabel jlTitle;
     private javax.swing.JToggleButton leaveButton;
     private javax.swing.JButton optionsButton;
     private javax.swing.JButton startButton;
