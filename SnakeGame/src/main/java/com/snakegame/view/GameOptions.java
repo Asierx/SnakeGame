@@ -74,15 +74,19 @@ public class GameOptions extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Display a confirmation dialog to the user
         int response = JOptionPane.showConfirmDialog(frame, "¿Are you sure you want to leave? :( ", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        
+        // Check if the user selected "Yes"
         if (response == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            System.exit(0); // If the user confirmed, exit the application
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // Button for returning to the main menu
     private void btnBack2MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2MenuActionPerformed
-        Menu menu = new Menu(frame);
-        frame.showMenu(menu);
+        Menu menu = new Menu(frame); // Create a new instance of the Menu class, passing the current frame as a parameter
+        frame.showMenu(menu); // Call the method to display the menu on the current frame
     }//GEN-LAST:event_btnBack2MenuActionPerformed
 
 

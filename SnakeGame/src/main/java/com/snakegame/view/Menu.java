@@ -12,6 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author asier
@@ -77,7 +83,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        optionsButton.setBackground(new java.awt.Color(102, 255, 102));
+        optionsButton.setBackground(new java.awt.Color(0, 255, 51));
         optionsButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         optionsButton.setForeground(new java.awt.Color(255, 255, 255));
         optionsButton.setText("OPTIONS");
@@ -146,50 +152,57 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void leaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveButtonActionPerformed
+        // Display a confirmation dialog to the user
         int response = JOptionPane.showConfirmDialog(frame, "¿Are you sure you want to leave? :( ", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        
+        // Check if the user selected "Yes"
         if (response == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            System.exit(0); // If the user confirmed, exit the application
         }
     }//GEN-LAST:event_leaveButtonActionPerformed
 
+    // Button for accesing to the Options Panel
     private void optionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsButtonActionPerformed
-         GameOptions gameOptions = new GameOptions(frame);
-        frame.initOptions(gameOptions);
+        GameOptions gameOptions = new GameOptions(frame); // Create a new instance of the GameOptions class, passing the current frame as a parameter
+        frame.initOptions(gameOptions); // Initialize the game options in the current frame by calling the initOptions method
     }//GEN-LAST:event_optionsButtonActionPerformed
 
+    // Button for accesing to my personal linkPage (you can support me if you want) :)
     private void btnSupportMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupportMeActionPerformed
 
-        // Process statments
-        String myPortFolio = "https://linktr.ee/yoi2k";
-        String SupportPage = "https://www.paypal.me/Yoi2k"; 
-        
-        // try catch in case de clause fails in its executions
+        // URL strings for portfolio and support page
+        String myPortFolio = "https://linktr.ee/yoi2k"; // Link to the portfolio
+        String SupportPage = "https://www.paypal.me/Yoi2k"; // Link to the support page
+
+        // Try-catch block to handle potential exceptions during process execution
         try {
-            // First process initialitzation
+            // Initialization of the first process to open the portfolio link
             ProcessBuilder pbopenPortFolioCMD = new ProcessBuilder("cmd", "/c", "start", myPortFolio);
-            
-            // First process execution statement
+
+            // Execution of the first process to open the portfolio
             pbopenPortFolioCMD.start();
-            
-            Thread.sleep(500); // 0,5s wait between process
-            
-            // Second process initialitzation
+
+            // Pause for 0.5 seconds to allow the first process to initialize
+            Thread.sleep(500); 
+
+            // Initialization of the second process to open the support page link
             ProcessBuilder pbSupportDonoPageCMD = new ProcessBuilder("cmd", "/c", "start", SupportPage);
-            
-            // Second process execution statement
+
+            // Execution of the second process to open the support page
             pbSupportDonoPageCMD.start();
-            
-        // Exception handling
+
+        // Exception handling for IOException and InterruptedException
         } catch (IOException ex) {
-            System.err.println("Accesing to Page Error" + ex.getMessage());
+            // Print an error message if there is an issue accessing the pages
+            System.err.println("Accessing to Page Error: " + ex.getMessage());
         } catch (InterruptedException ex) {
+            // Log an error if the sleep thread is interrupted
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSupportMeActionPerformed
 
     private void jlTitleComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jlTitleComponentResized
 
-        
     }//GEN-LAST:event_jlTitleComponentResized
 
 

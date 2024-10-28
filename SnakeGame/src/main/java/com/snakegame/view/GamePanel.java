@@ -4,6 +4,7 @@
  */
 package com.snakegame.view;
 
+import com.snakegame.controller.GameController;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 public class GamePanel extends javax.swing.JPanel {
     
     private final GameFrame frame;
+    private GameController gameController;
 
     /**
      * Creates new form GamePanel
@@ -21,8 +23,17 @@ public class GamePanel extends javax.swing.JPanel {
     public GamePanel(GameFrame frame) {
         this.frame = frame;
         initComponents();
+        jlTime.setText("Time Elapsed: 00:00"); // Sets the initial text of the timer
+        jlTime.setVisible(true); // Makes the timer label visible
+        gameController = new GameController(this); // Creates a new instance of GameController which automatically starts the timer
     }
-
+    
+    // Method for updating the timer in real-time
+    public void updateTimer(String time) {
+    jlTime.setText("Time Elapsed: " + time); // Sets the text of the label jlTime to display the elapsed time
+        jlTime.revalidate(); // Revalidates the jlTime component to ensure its properties are updated
+        jlTime.repaint(); // Requests the jlTime component to repaint to reflect the changes in the GUI
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,8 +47,15 @@ public class GamePanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnLeave = new javax.swing.JButton();
         btnBack2Menu = new javax.swing.JButton();
-        jlTimer = new javax.swing.JLabel();
         jlFuncTimer = new javax.swing.JLabel();
+        jlTime = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(51, 255, 51));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 2));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -47,9 +65,11 @@ public class GamePanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 254, Short.MAX_VALUE)
         );
 
+        btnLeave.setBackground(new java.awt.Color(0, 255, 51));
+        btnLeave.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnLeave.setText("Leave");
         btnLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +77,8 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack2Menu.setBackground(new java.awt.Color(0, 255, 51));
+        btnBack2Menu.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnBack2Menu.setText("Go back");
         btnBack2Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +86,14 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
 
-        jlTimer.setText("Timer:");
+        jlTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTime.setBackground(new java.awt.Color(255, 255, 255));
+        jlTime.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jlTime.setForeground(new java.awt.Color(51, 255, 51));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel1.setText("SNAKE!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,60 +102,71 @@ public class GamePanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addComponent(jlFuncTimer)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack2Menu)
-                        .addGap(73, 73, 73)
-                        .addComponent(jlTimer)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(jlFuncTimer)
-                                .addGap(0, 135, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLeave))))))
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlTime, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                                .addComponent(btnBack2Menu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLeave)
+                                .addGap(6, 6, 6)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlFuncTimer)
-                        .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnBack2Menu)
+                                .addComponent(btnLeave))
+                            .addComponent(jlTime, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlFuncTimer))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlTimer)
-                            .addComponent(btnBack2Menu)
-                            .addComponent(btnLeave))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // Leave Button
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
+        // Display a confirmation dialog to the user
         int response = JOptionPane.showConfirmDialog(frame, "¿Are you sure you want to leave? :( ", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        
+        // Check if the user selected "Yes"
         if (response == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            System.exit(0); // If the user confirmed, exit the application
         }
     }//GEN-LAST:event_btnLeaveActionPerformed
-
+    
+    // Button for returning to the main menu
     private void btnBack2MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2MenuActionPerformed
-       Menu menu = new Menu(frame);
-       frame.showMenu(menu);
+       Menu menu = new Menu(frame); // Create a new instance of the Menu class, passing the current frame as a parameter
+       frame.showMenu(menu); // Call the method to display the menu on the current frame
     }//GEN-LAST:event_btnBack2MenuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2Menu;
     private javax.swing.JButton btnLeave;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlFuncTimer;
-    private javax.swing.JLabel jlTimer;
+    private javax.swing.JLabel jlTime;
     // End of variables declaration//GEN-END:variables
 }

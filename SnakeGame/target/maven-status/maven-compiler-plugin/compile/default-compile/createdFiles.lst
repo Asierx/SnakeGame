@@ -12,6 +12,7 @@ com\snakegame\model\Direction.class
 com\snakegame\model\Food.class
 com\snakegame\view\GamePanel.class
 com\snakegame\view\Menu.class
+com\snakegame\controller\GameController$1.class
 com\snakegame\model\Snake.class
 com\snakegame\view\GameOptions.class
 com\snakegame\Main.class
